@@ -29,7 +29,13 @@ public class Library {
                     System.out.println("Student has already issued this book.");
                     return;
                 }
-                st.issuedBooks.add(bookUUID);
+                for(int i =0;i<3;i++) {
+                    if(st.issuedBooks.get(i) == 0) {
+                        st.issuedBooks.set(i, bookUUID);
+                        break;
+                    }
+                }
+                Students.writeStudents();
                 System.out.println("Book issued successfully.");
                 return;
             }
