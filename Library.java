@@ -17,13 +17,24 @@ public class Library {
         }
     }
 
-    public static void issueBook(Student st, Integer bookUUID) {
-        if(st.issuedBooks.size() < 3) {
-            st.issuedBooks.add(bookUUID);
-            System.out.println("Book issued successfully.");
-        } else {
-            System.out.println("Student has already issued 3 books. Cannot issue more.");
+    public static void issueBook(Integer rollnum, Integer bookUUID) {
+        Student st = Students.findStudent(rollnum);
+        if(st == null) {
+            System.out.println("Student not found. Cannot issue book.");
+            return;
         }
+        for(Book b:books) {
+            if(b.uuid.equals(bookUUID)) {
+                if(st.issuedBooks.contains(bookUUID)) {
+                    System.out.println("Student has already issued this book.");
+                    return;
+                }
+                st.issuedBooks.add(bookUUID);
+                System.out.println("Book issued successfully.");
+                return;
+            }
+        }
+        System.out.println("Book with the given UUID not found.");
     }
 
     public static void returnBook(Student st, Integer bookUUID) {
@@ -39,6 +50,7 @@ public class Library {
         books.add(bk);
         try (FileWriter fileWriter = new FileWriter("books.txt",true)) {
             fileWriter.append(bk.toString());
+            fileWriter.append("\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

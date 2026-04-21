@@ -26,7 +26,10 @@ public class Main {
                     choice = MenuManager.menuChoiceHandler(br);
                     break;
                 case 3:
-                    choice = MenuManager.menuChoiceHandler(br);       
+                    Integer rollnum = InputHandler.inputStudentRollNum(br);
+                    Integer bookUUID = InputHandler.inputBookUUID(br);     
+                    Library.issueBook(rollnum, bookUUID);  
+                    choice = MenuManager.menuChoiceHandler(br);
                     break;
                 case 4:
                     // Code to return book

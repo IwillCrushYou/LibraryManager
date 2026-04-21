@@ -64,4 +64,39 @@ public class InputHandler {
         return book;
     }
 
+    public static Integer inputBookUUID(BufferedReader br) {
+        System.out.println("Enter book UUID: ");
+        try {
+            String line = br.readLine();
+            if (line == null || line.trim().isEmpty()) {
+                System.out.println("Input cannot be empty.");
+                return null;
+            }
+            return Integer.parseInt(line.trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. UUID should be an integer.");
+        } catch (IOException e) {
+            System.out.println("Invalid input. Please enter the UUID in the correct format.");
+        }
+        return null;
+    }
+
+    public static Integer inputStudentRollNum(BufferedReader br) {
+        System.out.println("Enter student roll number: ");
+        try {
+            String line = br.readLine();
+            if (line == null || line.trim().isEmpty()) {
+                System.out.println("Input cannot be empty.");
+                return null;
+            }
+            return Integer.parseInt(line.trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Roll number should be an integer.");
+        } catch (IOException e) {
+            System.out.println("Invalid input. Please enter the roll number in the correct format.");
+        }
+        return null;
+    }
+
+    
 }
