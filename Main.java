@@ -10,6 +10,8 @@ public class Main {
         
         Library.loadBooks();
         Students.loadStudents();
+        Logger.startLogger();
+        MenuManager.splashScreen();
         MenuManager.mainMenu();
         
         int choice = MenuManager.menuChoiceHandler(br);
@@ -44,6 +46,7 @@ public class Main {
                     choice= MenuManager.menuChoiceHandler(br);
             }
         }
+        Logger.shutdown();
         System.out.println("Exiting the system. Goodbye!");
     }
 }

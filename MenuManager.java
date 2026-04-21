@@ -50,4 +50,10 @@ public class MenuManager {
             System.out.println(b.toString());
         }
     }
+
+    public static void splashScreen() {
+        System.out.println("░█░░░▀█▀░█▀▄░█▀▄░█▀█░█▀▄░█░█░░░█▄█░█▀█░█▀█░█▀█░█▀▀░█▀▀░█▀▄");
+        System.out.println("░█░░░░█░░█▀▄░█▀▄░█▀█░█▀▄░░█░░░░█░█░█▀█░█░█░█▀█░█░█░█▀▀░█▀▄");
+        System.out.println("░▀▀▀░▀▀▀░▀▀░░▀░▀░▀░▀░▀░▀░░▀░░░░▀░▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░▀");                                                  
+    }
 }

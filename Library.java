@@ -36,6 +36,7 @@ public class Library {
                     }
                 }
                 Students.writeStudents();
+                Logger.log(st.name +" issued "+b.title+" by "+b.author);
                 System.out.println("Book issued successfully.");
                 return;
             }
