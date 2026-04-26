@@ -36,7 +36,7 @@ public class Library {
                     }
                 }
                 Students.writeStudents();
-                Logger.log(st.name +" issued "+b.title+" by "+b.author);
+                Logger.log(st.name +" issued book with UUID "+bookUUID);
                 System.out.println("Book issued successfully.");
                 return;
             }
@@ -44,13 +44,22 @@ public class Library {
         System.out.println("Book with the given UUID not found.");
     }
 
-    public static void returnBook(Student st, Integer bookUUID) {
-        if(st.issuedBooks.contains(bookUUID)) {
-            st.issuedBooks.remove(bookUUID);
-            System.out.println("Book returned successfully.");
-        } else {
-            System.out.println("Student has not issued this book.");
+    public static void returnBook(Integer rollnum, Integer bookUUID) {
+        Student st = Students.findStudent(rollnum);
+        if(st == null) {
+            System.out.println("Student not found. Cannot return book.");
+            return;
         }
+        for(int i =0;i<3;i++) {
+            if(st.issuedBooks.get(i).equals(bookUUID)) {
+                st.issuedBooks.set(i, 0);
+                Students.writeStudents();
+                Logger.log(st.name +" returned book with UUID "+bookUUID);
+                System.out.println("Book returned successfully.");
+                return;
+            }
+        }
+        System.out.println("This student did not issue a book with the given UUID.");
     }
 
     public static void addBook(Book bk) {
@@ -58,6 +67,7 @@ public class Library {
         try (FileWriter fileWriter = new FileWriter("books.txt",true)) {
             fileWriter.append(bk.toString());
             fileWriter.append("\n");
+            Logger.log(bk.title +" added to the system.");
         } catch (IOException e) {
             e.printStackTrace();
         }

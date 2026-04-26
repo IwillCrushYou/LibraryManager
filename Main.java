@@ -15,7 +15,7 @@ public class Main {
         MenuManager.mainMenu();
         
         int choice = MenuManager.menuChoiceHandler(br);
-        while(choice != 6) {
+        while(choice != 7) {
             switch(choice) {
                 case 1:
                     Book b = InputHandler.inputBook(br);
@@ -34,11 +34,17 @@ public class Main {
                     choice = MenuManager.menuChoiceHandler(br);
                     break;
                 case 4:
-                    // Code to return book
+                    Integer returnRollnum = InputHandler.inputStudentRollNum(br);
+                    Integer returnBookUUID = InputHandler.inputBookUUID(br);
+                    Library.returnBook(returnRollnum, returnBookUUID);
                     choice = MenuManager.menuChoiceHandler(br);
                     break;
                 case 5:
                     MenuManager.showBooks();
+                    choice = MenuManager.menuChoiceHandler(br);
+                    break;
+                case 6:
+                    MenuManager.showStudents();
                     choice = MenuManager.menuChoiceHandler(br);
                     break;  
                 default:

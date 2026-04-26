@@ -34,6 +34,7 @@ public class Students {
         try (FileWriter fileWriter = new FileWriter("students.txt",true)) {
             fileWriter.append(st.toString());
             fileWriter.append("\n");
+            Logger.log(st.name +" added to the system.");
         } catch (IOException e) {
             e.printStackTrace();
         }
